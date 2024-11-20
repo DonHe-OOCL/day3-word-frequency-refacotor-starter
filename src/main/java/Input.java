@@ -4,9 +4,9 @@ public class Input {
     private int count;
 
     // todo rename args name
-    public Input(String w, int i){
-        this.value =w;
-        this.count =i;
+    public Input(String w, int i) {
+        this.value = w;
+        this.count = i;
     }
 
     // todo add setter
