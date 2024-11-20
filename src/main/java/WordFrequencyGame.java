@@ -5,16 +5,20 @@ import java.util.Map;
 import java.util.StringJoiner;
 
 public class WordFrequencyGame {
+
+    public static final String SPACE = "\\s+";
+    public static final String LINE_BREAK = "\n";
+    public static final String CALCULATE_ERROR = "Calculate Error";
+
     public String getWordFrequency(String sentence) {
         // TODO if else 块
-        // todo 抽取 \\s+ 为常量
-        if (sentence.split("\\s+").length == 1) {
+        if (sentence.split(SPACE).length == 1) {
             return sentence + " 1";
         } else {
             // todo 抽出多个方法
             try {
                 //split the input string with 1 to n pieces of spaces
-                String[] words = sentence.split("\\s+");
+                String[] words = sentence.split(SPACE);
 
                 List<WordFrequency> wordFrequencies = new ArrayList<>();
                 for (String word : words) {
@@ -34,14 +38,14 @@ public class WordFrequencyGame {
 
                 wordFrequencies.sort((word, nextWord) -> nextWord.getWordCount() - word.getWordCount());
 
-                StringJoiner joiner = new StringJoiner("\n");
+                StringJoiner joiner = new StringJoiner(LINE_BREAK);
                 for (WordFrequency wordFrequency : wordFrequencies) {
                     String frequency = wordFrequency.getWord() + " " + wordFrequency.getWordCount();
                     joiner.add(frequency);
                 }
                 return joiner.toString();
             } catch (Exception e) {
-                return "Calculate Error";
+                return CALCULATE_ERROR;
             }
         }
     }
