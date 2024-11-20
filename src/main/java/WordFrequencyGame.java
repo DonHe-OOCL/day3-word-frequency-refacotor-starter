@@ -9,19 +9,18 @@ public class WordFrequencyGame {
     public static final String SPACE = " ";
 
     public String getWordFrequency(String sentence) {
-        // TODO if else 块
         if (sentence.split(SPACE_REGEX).length == 1) {
             return sentence + " 1";
-        } else {
-            try {
-                List<WordFrequency> wordFrequencies = getInitialWordFrequencies(sentence);
-                //get the wordToWordFrequencies for the next step of sizing the same word
-                wordFrequencies = getWordFrequencies(wordFrequencies);
-                return buildResult(wordFrequencies);
-            } catch (Exception e) {
-                return CALCULATE_ERROR;
-            }
         }
+        try {
+            List<WordFrequency> wordFrequencies = getInitialWordFrequencies(sentence);
+            //get the wordToWordFrequencies for the next step of sizing the same word
+            wordFrequencies = getWordFrequencies(wordFrequencies);
+            return buildResult(wordFrequencies);
+        } catch (Exception e) {
+            return CALCULATE_ERROR;
+        }
+
     }
 
     private String buildResult(List<WordFrequency> wordFrequencies) {
