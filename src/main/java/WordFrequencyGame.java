@@ -23,7 +23,7 @@ public class WordFrequencyGame {
         }
     }
 
-    private static String buildResult(List<WordFrequency> wordFrequencies) {
+    private String buildResult(List<WordFrequency> wordFrequencies) {
         return wordFrequencies.stream()
                 .map(wordFrequency -> wordFrequency.getWord() + " " + wordFrequency.getWordCount())
                 .collect(Collectors.joining(LINE_BREAK));
