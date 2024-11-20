@@ -7,8 +7,6 @@ import java.util.StringJoiner;
 public class WordFrequencyGame {
     // todo rename getWordFrequency to getResult
     public String getResult(String inputStr) {
-
-
         // TODO if else 块
         // todo 抽取 \\s+ 为常量
         if (inputStr.split("\\s+").length == 1) {
@@ -16,7 +14,6 @@ public class WordFrequencyGame {
         } else {
             // todo 抽出多个方法
             try {
-
                 //split the input string with 1 to n pieces of spaces
                 String[] arr = inputStr.split("\\s+");
 
@@ -46,13 +43,10 @@ public class WordFrequencyGame {
                 }
                 return joiner.toString();
             } catch (Exception e) {
-
-
                 return "Calculate Error";
             }
         }
     }
-
 
     // todo use stream api to replace the for loop
     // refactor this method
@@ -68,10 +62,6 @@ public class WordFrequencyGame {
                 map.get(input.getValue()).add(input);
             }
         }
-
-
         return map;
     }
-
-
 }

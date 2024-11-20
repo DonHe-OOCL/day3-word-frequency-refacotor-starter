@@ -17,6 +17,4 @@ public class Input {
     public int getWordCount() {
         return this.count;
     }
-
-
 }
