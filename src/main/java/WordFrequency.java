@@ -7,12 +7,19 @@ public class WordFrequency {
         this.count = count;
     }
 
-    // todo add setter
     public String getWord() {
         return this.word;
     }
 
     public int getWordCount() {
         return this.count;
+    }
+
+    public void setWord(String word) {
+        this.word = word;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 }
