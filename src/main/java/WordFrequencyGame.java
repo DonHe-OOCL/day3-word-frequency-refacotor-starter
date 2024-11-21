@@ -20,7 +20,6 @@ public class WordFrequencyGame {
     }
 
     private String buildResult(String sentence) {
-        //split the input string with 1 to n pieces of spaces
         return Arrays.stream(sentence.split(SPACE_REGEX))
                 .collect(Collectors.groupingBy(word -> word))
                 .entrySet().stream()
