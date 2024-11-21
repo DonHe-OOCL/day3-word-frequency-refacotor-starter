@@ -13,35 +13,20 @@ public class WordFrequencyGame {
             return sentence + " 1";
         }
         try {
-            List<WordFrequency> wordFrequencies = getInitialWordFrequencies(sentence);
-            //get the wordToWordFrequencies for the next step of sizing the same word
-            wordFrequencies = getWordFrequencies(wordFrequencies);
-            return buildResult(wordFrequencies);
+            return buildResult(sentence);
         } catch (Exception e) {
-            return CALCULATE_ERROR;
+            return CALCULATE_ERROR + e.getMessage();
         }
-
     }
 
-    private String buildResult(List<WordFrequency> wordFrequencies) {
-        return wordFrequencies.stream()
-                .map(wordFrequency -> wordFrequency.getWord() + SPACE + wordFrequency.getWordCount())
-                .collect(Collectors.joining(LINE_BREAK));
-    }
-
-    private List<WordFrequency> getWordFrequencies(List<WordFrequency> wordFrequencies) {
-        return wordFrequencies.stream().collect(Collectors.groupingBy(WordFrequency::getWord))
+    private String buildResult(String sentence) {
+        //split the input string with 1 to n pieces of spaces
+        return Arrays.stream(sentence.split(SPACE_REGEX))
+                .collect(Collectors.groupingBy(word -> word))
                 .entrySet().stream()
                 .map(entry -> new WordFrequency(entry.getKey(), entry.getValue().size()))
                 .sorted((word, nextWord) -> nextWord.getWordCount() - word.getWordCount())
-                .toList();
-    }
-
-    private List<WordFrequency> getInitialWordFrequencies(String sentence) {
-        //split the input string with 1 to n pieces of spaces
-        String[] words = sentence.split(SPACE_REGEX);
-        return Arrays.stream(words)
-                .map(word -> new WordFrequency(word, 1))
-                .toList();
+                .map(wordFrequency -> wordFrequency.getWord() + SPACE + wordFrequency.getWordCount())
+                .collect(Collectors.joining(LINE_BREAK));
     }
 }
