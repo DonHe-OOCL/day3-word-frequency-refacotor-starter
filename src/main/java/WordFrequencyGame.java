@@ -9,18 +9,19 @@ public class WordFrequencyGame {
     public static final String SPACE = " ";
 
     public String getWordFrequency(String sentence) {
-        if (sentence.split(SPACE_REGEX).length == 1) {
+        String[] words = sentence.split(SPACE_REGEX);
+        if (words.length == 1) {
             return sentence + " 1";
         }
         try {
-            return buildResult(sentence);
+            return buildResult(words);
         } catch (Exception e) {
             return CALCULATE_ERROR + e.getMessage();
         }
     }
 
-    private String buildResult(String sentence) {
-        return Arrays.stream(sentence.split(SPACE_REGEX))
+    private String buildResult(String[] words) {
+        return Arrays.stream(words)
                 .collect(Collectors.groupingBy(word -> word))
                 .entrySet().stream()
                 .map(entry -> new WordFrequency(entry.getKey(), entry.getValue().size()))
